@@ -1,5 +1,8 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  # before_action :set_house, only: [:show, :edit, :update, :destroy]
+
+  # Before login, a user can only see index page
+  before_action :authenticate_user!, :except => [:index ]
 
   # GET /houses
   # GET /houses.json
