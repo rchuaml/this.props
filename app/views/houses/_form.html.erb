@@ -1,0 +1,62 @@
+<%= form_with(model: house, local: true) do |form| %>
+  <% if house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% house.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bedrooms %>
+    <%= form.number_field :bedrooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bathrooms %>
+    <%= form.number_field :bathrooms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor_area %>
+    <%= form.number_field :floor_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :furnishing %>
+    <%= form.check_box :furnishing %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor_levels %>
+    <%= form.number_field :floor_levels %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lease_left %>
+    <%= form.number_field :lease_left %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

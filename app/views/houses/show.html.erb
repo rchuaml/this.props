@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @house.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @house.location %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @house.price %>
+</p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @house.bedrooms %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @house.bathrooms %>
+</p>
+
+<p>
+  <strong>Floor area:</strong>
+  <%= @house.floor_area %>
+</p>
+
+<p>
+  <strong>Furnishing:</strong>
+  <%= @house.furnishing %>
+</p>
+
+<p>
+  <strong>Floor levels:</strong>
+  <%= @house.floor_levels %>
+</p>
+
+<p>
+  <strong>Lease left:</strong>
+  <%= @house.lease_left %>
+</p>
+
+<%= link_to 'Edit', edit_house_path(@house) %> |
+<%= link_to 'Back', houses_path %>
