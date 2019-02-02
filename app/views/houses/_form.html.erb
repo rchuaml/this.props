@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :lat %>
+    <%= form.number_field :lat, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= form.label :long %>
+    <%= form.number_field :long, step: :any %>
+  </div>
+
+  <div class="field">
     <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
