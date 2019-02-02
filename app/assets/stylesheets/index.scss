@@ -1,6 +1,19 @@
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Hind', sans-serif;
   height: 100%;
+}
+
+.nav-item {
+  padding-left: 10px;
+}
+
+a {
+  color: #E87D2D;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #FFA673;
 }
 
 /* Set the size of the div element that contains the map */

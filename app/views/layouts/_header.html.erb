@@ -1,22 +1,22 @@
-<nav class="navbar">
-  <%= link_to 'this.props', root_url %>
-
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Post A House', new_house_path %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'log out', destroy_user_session_url, method: :delete %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Sign in', new_user_session_url %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign Up', new_user_registration_url %>
-        </li>
-      <% end %>
-    </ul>
+<nav class="navbar align-middle p-0">
+  <div class="navbar-brand">
+    <%= link_to 'this.props', root_url %>
+  </div>
+  <ul class="list-inline m-0">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Post a House', new_house_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Logout', destroy_user_session_url, method: :delete %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign in', new_user_session_url %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_registration_url %>
+      </li>
+    <% end %>
+  </ul>
 </nav>
