@@ -7,23 +7,39 @@
 
 
 
+
 <script>
   // Initialize and add the map
   var map;
 
   function initMap() {
+    // The Binding of the infobox
+    function bindInfoWindow(marker, map, infowindow, info) {
+    marker.addListener('click', function() {
+        infowindow.setContent(info);
+        infowindow.open(map, this);
+    });
+}
     // The location of Singapore
     var sg = {lat: <%= @test_location[0] %>, lng: <%= @test_location[1] %>};
     //icon
     var icon = {
-      url: 'https://image.flaticon.com/icons/svg/189/189662.svg',
-      scaledSize: new google.maps.Size(20, 20)
+      url: 'https://bravovillas.com/wp-content/uploads/2015/01/map-marker-red-fat.png',
+      scaledSize: new google.maps.Size(30, 30)
     };
     // The map, centered at Sg
+
     map = new google.maps.Map(
         document.getElementById('map'), {zoom: 11, center: sg});
+
     // Plot Markers
+    // Add content box for each marker
+    let i = 0
     <% @houses.each do |house| %>
+
+    	marker = marker + i;
+      var infowindow = new google.maps.InfoWindow();
+
       var marker = new google.maps.Marker({
         position: {lat: <%= house.lat %>, lng: <%= house.long %>},
         map: map,
@@ -32,14 +48,13 @@
 
       google.maps.event.addListener(marker,'click',function() {
           var infowindow = new google.maps.InfoWindow({
-            content: `Name: <%= house.name %>`
+            content: "<h6> Name: <%= house.name %> </h6>" + "<h6> Price: <%= house.price %></h6>" + "<h6> Bedrooms: <%= house.bedrooms %></h6>" + "<h6> Bathrooms: <%= house.bathrooms %></h6>" + "<h6> Lease Left(years): <%= house.lease_left %></h6>" + "<h6> House posted by user: <%= house.user_id %></h6>"
           });
           infowindow.open(map, this);
       });
  
     <% end %>
   }
-
 </script>
 
 
