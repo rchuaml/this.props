@@ -10,11 +10,15 @@
 <script>
   // Initialize and add the map
   var map;
-  var bounds;
 
   function initMap() {
     // The location of Singapore
     var sg = {lat: <%= @test_location[0] %>, lng: <%= @test_location[1] %>};
+    //icon
+    var icon = {
+      url: 'https://image.flaticon.com/icons/svg/189/189662.svg',
+      scaledSize: new google.maps.Size(20, 20)
+    };
     // The map, centered at Sg
     map = new google.maps.Map(
         document.getElementById('map'), {zoom: 11, center: sg});
@@ -22,10 +26,18 @@
     <% @houses.each do |house| %>
       var marker = new google.maps.Marker({
         position: {lat: <%= house.lat %>, lng: <%= house.long %>},
-        map: map
+        map: map,
+        icon: icon
       })
+
+      google.maps.event.addListener(marker,'click',function() {
+          var infowindow = new google.maps.InfoWindow({
+            content: `Name: <%= house.name %>`
+          });
+          infowindow.open(map, this);
+      });
+ 
     <% end %>
-    
   }
 
 </script>
