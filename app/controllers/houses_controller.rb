@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  # before_action :set_house, only: [:show, :edit, :update, :destroy]
+  # before_action :set_house, only: [:index]
 
   # Before login, a user can only see index page
   before_action :authenticate_user!, :except => [:index ]
@@ -10,7 +10,6 @@ class HousesController < ApplicationController
     @houses = House.all
     @api_key = Rails.application.credentials.dig(:google_map_api)[:api_key]
     @test_location = [1.28967, 103.85]
-    
   end
 
   # GET /houses/1

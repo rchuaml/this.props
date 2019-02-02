@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Google Maps Test</h3>
+
 <!--The div element for the map -->
 <div id="map"></div>
 
@@ -9,16 +9,32 @@
 
 <script>
   // Initialize and add the map
+  var map;
+  var bounds;
+
   function initMap() {
-    // The location of Uluru
-    var uluru = {lat: <%= @test_location[0] %>, lng: <%= @test_location[1] %>};
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 4, center: uluru});
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
+    // The location of Singapore
+    var sg = {lat: <%= @test_location[0] %>, lng: <%= @test_location[1] %>};
+    // The map, centered at Sg
+    map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 11, center: sg});
+    // Plot Markers
+    <% @houses.each do |house| %>
+      var marker = new google.maps.Marker({
+        position: {lat: <%= house.lat %>, lng: <%= house.long %>},
+        map: map
+      })
+    <% end %>
+    
   }
+
 </script>
+
+
+
+
+
+
 <!--Load the API from the specified URL
 * The async attribute allows the browser to render the page while the API loads
 * The key parameter will contain your own API key (which is not needed for this tutorial)
