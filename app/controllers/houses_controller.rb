@@ -8,7 +8,6 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
-    @api_key = Rails.application.credentials.dig(:google_map_api)[:api_key]
     @test_location = [1.28967, 103.85]
   end
 

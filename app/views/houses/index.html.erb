@@ -22,10 +22,11 @@
     <% @houses.each do |house| %>
       var marker = new google.maps.Marker({
         position: {lat: <%= house.lat %>, lng: <%= house.long %>},
-        map: map
+        map: map,
+        icon: 'https://bravovillas.com/wp-content/uploads/2015/01/map-marker-red-fat.png'
       })
     <% end %>
-    
+
   }
 
 </script>
@@ -41,5 +42,5 @@
 * The callback parameter executes the initMap() function
 -->
 <script async defer
-src=<%= "https://maps.googleapis.com/maps/api/js?key=#{@api_key}&callback=initMap" %>>
+src=<%= "https://maps.googleapis.com/maps/api/js?key=&callback=initMap" %>>
 </script>
