@@ -4,14 +4,6 @@
 <!--The div element for the map -->
 <div id="map"></div>
 
-<!-- generate a image for all the houses house.image generates the activestorage path -->
-    <% @houses.each do |house| %>
-    <p>house name: </p><%= house.name %>
-    <%= image_tag(house.image) %>
-<%end%>
-
-
-
 <script>
   // Initialize and add the map
   var map;
@@ -72,5 +64,5 @@
 * The callback parameter executes the initMap() function
 -->
 <script async defer
-src=<%= "https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6D21vwDXz2lyqSU3Qx-FKGsu0gH8WNM&callback=initMap" %>>
+src=<%= "https://maps.googleapis.com/maps/api/js?key=&callback=initMap" %>>
 </script>
