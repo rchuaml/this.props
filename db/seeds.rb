@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-House.create(name: 'Atrium', location: 'Orchard', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, user_id: 2)
-House.create(name: 'Sentosa Cove', location: 'Sentosa', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, user_id: 2)
-House.create(name: 'Champions Court', location: 'Woodlands', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, user_id: 2)
+House.create(name: 'Atrium', location: 'Orchard', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, latitude: 1.299780, longitude: 103.845558, user_id: 2)
+House.create(name: 'Sentosa Cove', location: 'Sentosa', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, latitude: 1.246710, longitude: 103.8443200, user_id: 2)
+House.create(name: 'Champions Court', location: 'Woodlands', price: 680000, bedrooms: 3, bathrooms: 2, floor_area: 88, furnishing: true, floor_levels: 22, lease_left: 95, latitude: 1.430700, longitude: 103.790930, user_id: 2)

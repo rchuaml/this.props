@@ -10,6 +10,8 @@ class CreateHouses < ActiveRecord::Migration[5.2]
       t.boolean :furnishing
       t.integer :floor_levels
       t.integer :lease_left
+      t.decimal :latitude
+      t.decimal :longitude
       t.references :user
 
       t.timestamps

@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div id="map"></div>
+
 <h1>Houses</h1>
 
 <table>
@@ -41,3 +43,8 @@
 <br>
 
 <%= link_to 'New House', new_house_path %>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbNZbA1zSBKlFa3vbZytmqJzkEbaiSMEU&callback=initMap">
+</script>

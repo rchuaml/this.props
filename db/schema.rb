@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2019_02_01_053335) do
     t.boolean "furnishing"
     t.integer "floor_levels"
     t.integer "lease_left"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
