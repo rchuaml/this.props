@@ -13,7 +13,6 @@ class CreateHouses < ActiveRecord::Migration[5.2]
       t.integer :floor_levels
       t.integer :lease_left
       t.references :user
-
       t.timestamps
     end
   end
