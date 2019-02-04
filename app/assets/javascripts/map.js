@@ -1,5 +1,7 @@
   // Initialize and add the map
   var map;
+  var markers = [];
+
   function initMap() {
     // The Binding of the infobox
     function bindInfoWindow(marker, map, infowindow, info) {
@@ -13,7 +15,7 @@
 
     // The map, centered at Sg
     map = new google.maps.Map(document.getElementById('map'), {zoom: 11, center: sg});
-
+    
     plotMarkers(gon.houses);
   };
 
@@ -45,5 +47,12 @@
 
   //Filter Function
   function filter() {
-      alert("did smth");
+      //Need to Filter and create a new array of house objects and pass into Plot Markers.
+      let filtered = gon.houses.filter((val, ind, arr) => {
+        return val.bedrooms == 4;
+      });
+
+
+      console.log(filtered)
+      clearMarkers();
   };
