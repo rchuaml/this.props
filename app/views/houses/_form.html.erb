@@ -20,18 +20,26 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+  	<h6>Search for location:</h6>
+    <div class = "searchBox">
+		<input type="text" placeholder="Search Here!" class="search" onkeypress= "search(this)"/>
+  	</div>
+  	<div class = "searchResults">
+  		<ul class = "resultslist">
+  			</ul>
+  	</div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_area :location %>
+    <%= form.text_area :location ,:readonly => true%>
   </div>
 
-  <div class="field">
+  <div class="field" style="display:none">
     <%= form.label :lat %>
     <%= form.number_field :lat, step: :any %>
   </div>
 
-  <div class="field">
+  <div class="field" style="display:none">
     <%= form.label :long %>
     <%= form.number_field :long, step: :any %>
   </div>
@@ -41,7 +49,7 @@
     <%= form.number_field :price %>
   </div>
 
-  <div class="field">
+  <div class="field" >
     <%= form.label :bedrooms %>
     <%= form.number_field :bedrooms %>
   </div>
@@ -75,3 +83,36 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+	function search(ele){
+		if(event.keyCode ==  32){
+			console.log("space pressed")
+		var input = ele.value;
+		var user_input = input.toString().split(" ").join('%20');
+
+	 var settings = {
+   "async": true,
+   "crossDomain": true,
+   "url": "https://us1.locationiq.com/v1/search.php?key=pk.a152695d6750793ce3da9347d9567cdc&q=" + user_input + "&format=json",
+   "method": "GET"
+ 	}
+ 	// Create Search Results and click event to the search results to update form
+ 	$.ajax(settings).done(function (response) {
+ 		document.querySelector(".resultslist").innerHTML = " ";
+ 		for(let i = 0 ; i < response.length ; i++){
+			var node = document.createElement("Li");
+			var textnode = document.createTextNode(response[i].display_name);
+			node.addEventListener('click', function() {
+				document.querySelector("#house_location").innerHTML = response[i].display_name;
+				document.querySelector("#house_lat").value = parseFloat(response[i].lat);
+				document.querySelector("#house_long").value = parseFloat(response[i].lon);
+			});
+
+			node.appendChild(textnode);
+			document.querySelector(".resultslist").appendChild(node);
+			 	}
+ 			});
+ 		}
+	}
+</script>
