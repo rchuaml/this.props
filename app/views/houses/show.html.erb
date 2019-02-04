@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @house.name %>
 </p>
+
+<p>
+  <strong>Image:</strong>
+   <%= image_tag(@house.image) %>
+</p>
+
 
 <p>
   <strong>Location:</strong>
@@ -46,4 +51,4 @@
 </p>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back', houses_path %>
+<%= link_to 'Back', root_path %>
