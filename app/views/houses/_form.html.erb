@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.file_field :image %>
+
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -19,6 +21,16 @@
   <div class="field">
     <%= form.label :location %>
     <%= form.text_area :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lat %>
+    <%= form.number_field :lat, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= form.label :long %>
+    <%= form.number_field :long, step: :any %>
   </div>
 
   <div class="field">

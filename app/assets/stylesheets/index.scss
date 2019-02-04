@@ -1,0 +1,42 @@
+body {
+  font-family: 'Hind', sans-serif;
+  height: 100%;
+}
+
+.nav-item {
+  padding-left: 10px;
+}
+
+a {
+  color: #E87D2D;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #FFA673;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+ height: 500px;  /* The height is 400 pixels */
+ width: 100%;  /* The width is the width of the web page */
+}
+
+.nav-item {
+  display: inline;
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+}
+
+
+/*
+Color Theme:
+#FFA673
+#E87D2D
+#FFAA5A
+#E89F45
+#FFB84D
+*/
