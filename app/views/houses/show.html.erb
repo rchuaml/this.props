@@ -7,7 +7,9 @@
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto">
 				<p>
-					<%= image_tag(@house.image) %>
+					<% @house.images.each do |p| %>
+					<%= image_tag(p) %>
+					<% end %>
 				</p>
 			</div>
 		</div>
