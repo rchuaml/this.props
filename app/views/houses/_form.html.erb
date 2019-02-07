@@ -1,88 +1,119 @@
-<%= form_with(model: house, local: true) do |form| %>
-  <% if house.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+<style>
+.searchResults{
+	float:right;
+}
 
-      <ul>
-      <% house.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+body > div > div > div > div:nth-child(1){
+	background: #D3D3D3;
+	padding: 30px;
+}
 
-  <div class="field">
-  	<%= form.label :Upload %> <%= form.label :Image %>
-		<%= form.file_field :image %>
-  </div>
+.list-group-item{
+	background: #D3D3D3;
+	margin: 0px 20px;
+}
 
-	  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  	<h6>Search for location:</h6>
-    <div class = "searchBox">
-		<input type="text" placeholder="Search Here!" class="search" onkeypress= "search(this)"/>
-  	</div>
-  	<div class = "searchResults">
-  		<ul class = "resultslist">
+.list-group-item:hover{
+	background: #E87D2D;
+	cursor: pointer;
+}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<%= form_with(model: house, local: true, class: "foo") do |form|%>
+	  		<% if house.errors.any? %>
+		    	<div id="error_explanation">
+		      	<h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+		      <ul>
+		      	<% house.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+			  <% end %>
+
+			  <h1>New House</h1>
+			  <div class="form-group">
+			  	<h6>Upload Images:</h6>
+					<%= form.file_field :image %>
+			  </div>
+
+				  <div class="form-group">
+			  	<h6>Name:</h6>
+			    <%= form.text_field :name, :class => "col-12" %>
+			  </div>
+			  	<h6>Search for location:</h6>
+			    <div class = "searchBox form-group">
+					<input type="text" placeholder="Search Here! Press space to trigger search!" class="search col-12" onkeypress= "search(this)"/>
+			  	</div>
+
+						  <div class="field">
+			  	<h6>Location:</h6>
+			    <%= form.text_area :location ,:class =>"col-12",:readonly => true%>
+			  </div>
+
+			  <div class="field" style="display:none">
+			    <%= form.label :lat %>
+			    <%= form.number_field :lat, step: :any %>
+			  </div>
+
+			  <div class="field" style="display:none">
+			    <%= form.label :long %>
+			    <%= form.number_field :long, step: :any %>
+			  </div>
+
+			  <div class="form-group">
+			  	<h6>Price:</h6>
+			    <%= form.number_field :price, :class => "col-12" %>
+			  </div>
+
+			  <div class="field" >
+			  	<h6>No. of Bedrooms:</h6>
+			    <%= form.number_field :bedrooms, :class => "col-12" %>
+			  </div>
+
+			  <div class="field">
+			  	<h6>No. of Bathrooms:</h6>
+			    <%= form.number_field :bathrooms, :class => "col-12" %>
+			  </div>
+
+		  	<div class="field">
+		  		<h6>Floor Area(Square Meters):</h6>
+		    	<%= form.number_field :floor_area, :class => "col-12" %>
+		  	</div>
+
+		  	<div class="field">
+		  		<h6>Furnishings:</h6>
+		    	<%= form.check_box :furnishing, :class => "col-12" %>
+		  	</div>
+
+		  	<div class="field">
+		     	<h6>Floor Levels:</h6>
+		    	<%= form.number_field :floor_levels, :class => "col-12" %>
+		  	</div>
+
+		  	<div class="field">
+		      <h6>Lease Left(years):</h6>
+		    	<%= form.number_field :lease_left, :class => "col-12" %>
+		  	</div>
+
+		  	<div class="actions">
+		    	<%= form.submit %>
+		  	</div>
+		<% end %>
+	</div>
+		<div class="col">
+  		<div class = "searchResults">
+  			<ul class = "resultslist list-group">
   			</ul>
-  	</div>
+  		</div>
+		</div>
+	</div>
+</div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_area :location ,:readonly => true%>
-  </div>
-
-  <div class="field" style="display:none">
-    <%= form.label :lat %>
-    <%= form.number_field :lat, step: :any %>
-  </div>
-
-  <div class="field" style="display:none">
-    <%= form.label :long %>
-    <%= form.number_field :long, step: :any %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div class="field" >
-    <%= form.label :bedrooms %>
-    <%= form.number_field :bedrooms %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bathrooms %>
-    <%= form.number_field :bathrooms %>
-  </div>
-
-  <div class="field">
-    <%= form.label :floor_area %>
-    <%= form.number_field :floor_area %>
-  </div>
-
-  <div class="field">
-    <%= form.label :furnishing %>
-    <%= form.check_box :furnishing %>
-  </div>
-
-  <div class="field">
-    <%= form.label :floor_levels %>
-    <%= form.number_field :floor_levels %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lease_left %>
-    <%= form.number_field :lease_left %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 
 <script>
 	function search(ele){
@@ -102,6 +133,7 @@
  		document.querySelector(".resultslist").innerHTML = " ";
  		for(let i = 0 ; i < response.length ; i++){
 			var node = document.createElement("Li");
+			node.className = 'list-group-item';
 			var textnode = document.createTextNode(response[i].display_name);
 			node.addEventListener('click', function() {
 				document.querySelector("#house_location").innerHTML = response[i].display_name;
