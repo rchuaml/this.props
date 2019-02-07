@@ -1,7 +1,7 @@
 class House < ApplicationRecord
   belongs_to :user
   has_many :interests
-  has_one_attached :image
+  has_many_attached :images
 
   validates :name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, presence: true, on: :create
 
