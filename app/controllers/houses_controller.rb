@@ -8,7 +8,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
-    @test_location = [1.28967, 103.85]
+    gon.houses = @houses
   end
 
   # GET /houses/1

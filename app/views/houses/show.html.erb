@@ -6,7 +6,7 @@
 
 <p>
   <strong>Image:</strong>
-   <%= image_tag(@house.image) %>
+<%# image_tag(@house.image) %>
 </p>
 
 
@@ -51,4 +51,5 @@
 </p>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path %> <br>
+<%= link_to 'Contact seller of this house via email', sellerhouse_path(@house.id) %>
