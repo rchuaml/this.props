@@ -15,7 +15,7 @@
 
     // The map, centered at Sg
     map = new google.maps.Map(document.getElementById('map'), {zoom: 11, center: sg});
-    
+
     plotMarkers(gon.houses);
   };
 
