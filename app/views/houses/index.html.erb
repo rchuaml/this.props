@@ -12,15 +12,15 @@
         <div class="card-body small">
           <div class="row">
             <div class="col">
-              Price: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+              Price: <span><input type="text" size="5" value="<%= @houses.order(price: :asc).first.price %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(price: :asc).last.price %>"/></span>
             </div>
 
             <div class="col">
-              Floor Area: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+              Floor Area: <span><input type="text" size="5" value="<%= @houses.order(floor_area: :asc).first.floor_area %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(floor_area: :asc).last.floor_area %>"placeholder="Max"/></span>
             </div>
 
             <div class="col">
-              Floor Levels: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+              Floor Levels: <span><input type="text" size="5" value="<%= @houses.order(floor_levels: :asc).first.floor_levels %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(floor_levels: :asc).last.floor_levels %>"/></span>
             </div>
           </div>
           <div class="row pt-4">
@@ -49,26 +49,13 @@
               <div class="row">
                 <div class="col">
                  <label class="switch">
-                    <input type="checkbox" value="true">
+                    <input type="checkbox">
                     <span class="sliderToggle round"></span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
-            <!--
-            Price Min-Max Input Fields
-
-            Bedrooms Slider . Bathrooms Slider.
-
-            Floor Area Min-Max Input Fields
-
-            Floor Levels Min-Max Input Fields.
-
-            At Least xx lease years left slider
-
-            Furnished True/False Selector
-            -->
 
           <button class="btn btn-primary small mt-3" onclick="filter()" id="filter">Apply Filter</button>
 
@@ -114,16 +101,6 @@
   leasesSlider.oninput = function() {
     leases.innerHTML = this.value;
   }
-
-
-
-
-
-
-
-
-
-
 
   $('.collapse').collapse()
 

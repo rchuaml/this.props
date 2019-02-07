@@ -15,7 +15,7 @@
 
     // The map, centered at Sg
     map = new google.maps.Map(document.getElementById('map'), {zoom: 11, center: sg});
-
+    
     plotMarkers(gon.houses);
   };
 
@@ -41,20 +41,48 @@
           });
           infowindow.open(map, this);
       });
+      markers.push(marker);
     };
   };
 
+  function clearMarkers(markers) {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    };
+  };
 
   //Filter Function
   function filter() {
-      //Need to Filter and create a new array of house objects and pass into Plot Markers.
+    //Collect Filter Data
+    let minPrice = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > input[type="text"]').value;
+    let maxPrice = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) > input[type="text"]').value;
+    let minFloorArea = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(2) > span:nth-child(1) > input[type="text"]').value;
+    let maxFloorArea = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(2) > span:nth-child(2) > input[type="text"]').value;
+    let minFloorLevel = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(3) > span:nth-child(1) > input[type="text"]').value;
+    let maxFloorLevel = document.querySelector('#collapseOne > div > div:nth-child(1) > div:nth-child(3) > span:nth-child(2) > input[type="text"]').value;
+    let bedrooms = document.querySelector('#bedrooms').innerText;
+    let bathrooms = document.querySelector('#bathrooms').innerText;
+    let minLeaseLeft = document.querySelector('#leases').innerText;
+    let furnish = document.querySelector('#collapseOne > div > div.row.pt-4 > div:nth-child(4) > div:nth-child(2) > div > label > input[type="checkbox"]').checked;
+    console.log(furnish);
 
-      let filtered = gon.houses.filter((val, ind, arr) => {
-        return val.bedrooms == 4;
-      });
+    //Need to Filter and create a new array of house objects and pass into Plot Markers.
+    let filtered = gon.houses.filter( house => {
+      return (
+        house.price >= parseInt(minPrice) &&
+        house.price <= parseInt(maxPrice) &&
+        house.floor_area >= parseInt(minFloorArea) &&
+        house.floor_area <= parseInt(maxFloorArea) &&
+        house.floor_levels >= parseInt(minFloorLevel) &&
+        house.floor_levels <= parseInt(maxFloorLevel) &&
+        house.bedrooms == parseInt(bedrooms) &&
+        house.bathrooms == parseInt(bathrooms) &&
+        house.lease_left >= parseInt(minLeaseLeft) && 
+        house.furnishing == furnish
+      );
+    });
 
-      
-      console.log(filtered);
-      clearMarkers();
-      plotMarkers(filtered);
+    clearMarkers(markers);
+    markers = [];
+    plotMarkers(filtered);
   };
