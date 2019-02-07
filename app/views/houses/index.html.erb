@@ -2,17 +2,80 @@
 
 
 <!-- Filter Bar -->
-<div>
-  <button class="btn btn-primary" onclick="filter()" id="filter">Filter</button>
-</div>
-<!--The div element for the map -->
-<div id="map"></div>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+        <button id="filterButton" class="btn btn-link p-1 m-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Filters
+        </button>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+
+            <!--
+            Price Min-Max Input Fields
+
+            Bedrooms Slider . Bathrooms Slider.
+
+            Floor Area Min-Max Input Fields
+
+            Floor Levels Min-Max Input Fields.
+
+            At Least xx lease years left slider
+
+            Furnished True/False Selector
+            -->
+
+
+
+
+            <div>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <p>Value: <span id="demo"></span></p>
+              </div>
+
+              <button class="btn btn-primary" onclick="filter()" id="filter">Filter</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--The div element for the map -->
+  <div id="map">
+  </div>
 
 <!--Load the API from the specified URL
 * The async attribute allows the browser to render the page while the API loads
 * The key parameter will contain your own API key (which is not needed for this tutorial)
 * The callback parameter executes the initMap() function
 -->
+
+<script>
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+
+  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+  $('.collapse').collapse()
+
+</script>
+
 <script async defer
 src=<%= "https://maps.googleapis.com/maps/api/js?key=&callback=initMap" %>>
 </script>
