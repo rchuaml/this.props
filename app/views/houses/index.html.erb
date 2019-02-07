@@ -8,9 +8,54 @@
           Filters
         </button>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
+      <div id="collapseOne" class="collapse show text-center" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body small">
+          <div class="row">
+            <div class="col">
+              Price: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+            </div>
 
+            <div class="col">
+              Floor Area: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+            </div>
+
+            <div class="col">
+              Floor Levels: <span><input type="text" size="5" placeholder="Min"/></span> - <span><input type="text" size="5" placeholder="Max"/></span>
+            </div>
+          </div>
+          <div class="row pt-4">
+            <div class="col slidecontainer">
+              <p class="m-0">Bedrooms: <span id="bedrooms"></span></p>
+              <input type="range" min="1" max="100" value="50" class="slider" id="bedroom_range">
+            </div>
+
+            <div class="col slidecontainer">
+              <p class="m-0">Bathrooms: <span id="bathrooms"></span></p>
+              <input type="range" min="1" max="100" value="50" class="slider" id="bathroom_range">
+            </div>
+
+
+            <div class="col slidecontainer">
+              <p class="m-0">Lease Left (At Least): <span id="leases"></span> years</p>
+              <input type="range" min="1" max="100" value="50" class="slider" id="lease_range">
+            </div>
+
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  Furnished
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                 <label class="switch">
+                    <input type="checkbox" value="true">
+                    <span class="sliderToggle round"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
             <!--
             Price Min-Max Input Fields
 
@@ -25,17 +70,7 @@
             Furnished True/False Selector
             -->
 
-
-
-
-            <div>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                <p>Value: <span id="demo"></span></p>
-              </div>
-
-              <button class="btn btn-primary" onclick="filter()" id="filter">Filter</button>
-            </div>
+          <button class="btn btn-primary small mt-3" onclick="filter()" id="filter">Apply Filter</button>
 
         </div>
       </div>
@@ -53,25 +88,43 @@
 -->
 
 <script>
-  var slider = document.getElementById("myRange");
-  var output = document.getElementById("demo");
-  output.innerHTML = slider.value;
+  //bedroom slider
+  var bedroomSlider = document.getElementById("bedroom_range");
+  var bedrooms = document.getElementById("bedrooms");
+  bedrooms.innerHTML = bedroomSlider.value;
 
-  slider.oninput = function() {
-    output.innerHTML = this.value;
+  bedroomSlider.oninput = function() {
+    bedrooms.innerHTML = this.value;
   }
 
-  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+  //bathroom slider
+  var bathroomsSlider = document.getElementById("bathroom_range");
+  var bathrooms = document.getElementById("bathrooms");
+  bathrooms.innerHTML = bathroomsSlider.value;
+
+  bathroomsSlider.oninput = function() {
+    bathrooms.innerHTML = this.value;
   }
 
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+  //lease slider
+  var leasesSlider = document.getElementById("lease_range");
+  var leases = document.getElementById("leases");
+  leases.innerHTML = leasesSlider.value;
+
+  leasesSlider.oninput = function() {
+    leases.innerHTML = this.value;
   }
+
+
+
+
+
+
+
+
+
+
+
   $('.collapse').collapse()
 
 </script>
