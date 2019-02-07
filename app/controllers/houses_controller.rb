@@ -13,6 +13,16 @@ class HousesController < ApplicationController
 
   # GET /houses/1
   # GET /houses/1.json
+
+  def button
+    @house = House.find(params[:id])
+    @buyer = current_user
+    UserMailer.new_buyer(@house, @buyer).deliver_now
+        respond_to do |format|
+    format.html { redirect_to show_path(@house.id), notice: 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.' }
+  end
+  end
+
   def show
   @house = House.find(params[:id])
   end
