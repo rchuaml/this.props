@@ -48,11 +48,13 @@
   //Filter Function
   function filter() {
       //Need to Filter and create a new array of house objects and pass into Plot Markers.
+
       let filtered = gon.houses.filter((val, ind, arr) => {
         return val.bedrooms == 4;
       });
 
-
-      console.log(filtered)
+      
+      console.log(filtered);
       clearMarkers();
+      plotMarkers(filtered);
   };

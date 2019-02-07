@@ -26,18 +26,18 @@
           <div class="row pt-4">
             <div class="col slidecontainer">
               <p class="m-0">Bedrooms: <span id="bedrooms"></span></p>
-              <input type="range" min="1" max="100" value="50" class="slider" id="bedroom_range">
+              <input type="range" min="<%= @houses.order(bedrooms: :asc).first.bedrooms %>" max="<%= @houses.order(bedrooms: :asc).last.bedrooms %>" value="<%= @houses.order(bedrooms: :asc).last.bedrooms/2 %>" class="slider" id="bedroom_range">
             </div>
 
             <div class="col slidecontainer">
               <p class="m-0">Bathrooms: <span id="bathrooms"></span></p>
-              <input type="range" min="1" max="100" value="50" class="slider" id="bathroom_range">
+              <input type="range" min="<%= @houses.order(bathrooms: :asc).first.bathrooms %>" max="<%= @houses.order(bathrooms: :asc).last.bathrooms %>" value="<%= @houses.order(bathrooms: :asc).last.bathrooms/2 %>" class="slider" id="bathroom_range">
             </div>
 
 
             <div class="col slidecontainer">
               <p class="m-0">Lease Left (At Least): <span id="leases"></span> years</p>
-              <input type="range" min="1" max="100" value="50" class="slider" id="lease_range">
+              <input type="range" min="<%= @houses.order(lease_left: :asc).first.lease_left %>" max="<%= @houses.order(lease_left: :asc).last.lease_left %>" value="<%= @houses.order(lease_left: :asc).last.lease_left/2 %>" class="slider" id="lease_range">
             </div>
 
             <div class="col">
