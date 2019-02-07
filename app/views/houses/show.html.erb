@@ -1,55 +1,102 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @house.name %>
-</p>
+	<p id="notice"><%= notice %></p>
+	<div class="container w-75 p-3">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<p>
+					<%= image_tag(@house.image) %>
+				</p>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col">
+				<p>
+					<h3> <strong> Details </strong> </h3>
+				</p>
+			</div>
+		</div>
+	</div>
 
-<p>
-  <strong>Image:</strong>
-<%= image_tag(@house.image) %>
-</p>
+	<div class="container w-75 p-3" style="background-color: #eee;">
+		<div class="row">
+    	<div class="col">
+    		<div class="heading" style="background-color: white;">
+  				<p> <strong>Name:</strong> </p>
+  					</div>
+  				<p> <%= @house.name %> </p>
+  			</div>
 
+  		<div class="col">
+  			<div class="heading" style="background-color: white;">
+  				<p> <strong>Location:</strong> </p>
+  			</div>
+  			<p> <%= @house.location %> </p>
+  		</div>
+		</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @house.location %>
-</p>
+		<div class="row">
+    	<div class="col">
+    		<div class="heading" style="background-color: white;">
+  				<p> <strong>Price:</strong> </p>
+  			</div>
+  			<p> $<%= @house.price %></p>
+  		</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @house.price %>
-</p>
+  		<div class="col">
+  			<div class="heading" style="background-color: white;">
+  				<p> <strong>Bedrooms:</strong> </p>
+  			</div>
+  			<p> <%= @house.bedrooms %> </p>
+  		</div>
+		</div>
 
-<p>
-  <strong>Bedrooms:</strong>
-  <%= @house.bedrooms %>
-</p>
+		<div class="row">
+    	<div class="col">
+    		<div class="heading" style="background-color: white;">
+  				<p> <strong>Bathrooms:</strong> </p>
+  			</div>
+  			<p> <%= @house.bathrooms %> </p>
+  		</div>
 
-<p>
-  <strong>Bathrooms:</strong>
-  <%= @house.bathrooms %>
-</p>
+  		<div class="col">
+  			<div class="heading" style="background-color: white;">
+  					<p> <strong>Floor area:</strong> </p>
+  			</div>
+  			<p> <%= @house.floor_area %> </p>
+  		</div>
+		</div>
 
-<p>
-  <strong>Floor area:</strong>
-  <%= @house.floor_area %>
-</p>
+		<div class="row">
+    	<div class="col">
+    		<div class="heading" style="background-color: white;">
+  				<p> <strong>Furnishing:</strong> </p>
+  			</div>
+  			<p> <%= @house.furnishing %> </p>
+  		</div>
 
-<p>
-  <strong>Furnishing:</strong>
-  <%= @house.furnishing %>
-</p>
+  		<div class="col">
+  			<div class="heading" style="background-color: white;">
+  				<p> <strong>Floor levels:</strong> </p>
+  			</div>
+  			<p> <%= @house.floor_levels %> </p>
+  		</div>
+		</div>
 
-<p>
-  <strong>Floor levels:</strong>
-  <%= @house.floor_levels %>
-</p>
+		<div class="row">
+    	<div class="col">
+    		<div class="heading" style="background-color: white;">
+  				<p> <strong> Lease left: </strong> </p>
+  			</div>
+  			<p> <%= @house.lease_left %> </p>
+  		</div>
+  		<div class="col">
+  		</div>
+		</div>
 
-<p>
-  <strong>Lease left:</strong>
-  <%= @house.lease_left %>
-</p>
-
-<%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back', root_path %> <br>
-<%= link_to 'Contact seller of this house via email', sellerhouse_path(@house.id) %>
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<%= link_to 'Edit', edit_house_path(@house) %> |
+				<%= link_to 'Back', root_path %> |
+				<%= link_to 'Contact seller of this house via email', sellerhouse_path(@house.id) %>
+			</div>
+		</div>
+	</div>
