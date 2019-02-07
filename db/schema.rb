@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_02_03_031304) do
   create_table "houses", force: :cascade do |t|
     t.string "name"
     t.text "location"
+    t.float "lat"
+    t.float "long"
     t.integer "price"
     t.integer "bedrooms"
     t.integer "bathrooms"
@@ -46,8 +48,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_031304) do
     t.boolean "furnishing"
     t.integer "floor_levels"
     t.integer "lease_left"
-    t.decimal "latitude"
-    t.decimal "longitude"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
