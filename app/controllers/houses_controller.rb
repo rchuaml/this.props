@@ -19,7 +19,9 @@ class HousesController < ApplicationController
     @buyer = current_user
     UserMailer.new_buyer(@house, @buyer).deliver_now
     respond_to do |format|
-      format.html { redirect_to show_path(@house.id), notice: 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.' }
+      flash[:success] = 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.'
+      format.html { redirect_to show_path(@house.id)}
+
     end
   end
 
@@ -46,12 +48,13 @@ class HousesController < ApplicationController
     respond_to do |format|
       if @house.save
         if@house.images.attached?
-          format.html { redirect_to root_path, notice: 'House was successfully created.' }
+          flash[:success] = "House post successfully created!"
+          format.html { redirect_to root_path}
           format.json { render :show, status: :created, location: @house }
         else
           @house.destroy
-          flash.now[:notice] = "Please attach a few images before saving."
-          format.html { render :new}
+          flash.now[:danger] = "Please attach a few images before saving."
+          format.html {render :new}
           format.json { render json: @house.errors, status: :unprocessable_entity }
         end
       else
@@ -66,9 +69,11 @@ class HousesController < ApplicationController
   def update
     respond_to do |format|
       if @house.update(house_params)
-        format.html { redirect_to @house, notice: 'House was successfully updated.' }
+        flash[:success] = 'House successfully updated.'
+        format.html { redirect_to @house}
         format.json { render :show, status: :ok, location: @house }
       else
+        flash[:danger] = 'House failed to be updated.'
         format.html { render :edit }
         format.json { render json: @house.errors, status: :unprocessable_entity }
       end
@@ -80,7 +85,8 @@ class HousesController < ApplicationController
   def destroy
     @house.destroy
     respond_to do |format|
-      format.html { redirect_to houses_url, notice: 'House was successfully destroyed.' }
+      flash[:success] = 'House successfully destroyed.'
+      format.html { redirect_to houses_url }
       format.json { head :no_content }
     end
   end

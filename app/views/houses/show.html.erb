@@ -94,7 +94,11 @@
     		<div class="heading" style="background-color: white;">
   				<p> <strong>Furnishing:</strong> </p>
   			</div>
-  			<p> <%= @house.furnishing %> </p>
+  		<% if @house.furnishing == true %>
+  				<p>Furnished</p>
+  				<% else %>
+  				<p>Unfurnished</p>
+  				<% end %>
   		</div>
 
   		<div class="col">

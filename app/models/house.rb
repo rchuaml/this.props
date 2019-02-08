@@ -3,7 +3,7 @@ class House < ApplicationRecord
   has_many :interests
   has_many_attached :images
 
-  validates :name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, presence: true, on: :create
+  validates :name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :floor_levels, :lease_left, presence: true, on: :create
 
    def image_path
     ActiveStorage::Blob.service.send(:path_for, image.key)
