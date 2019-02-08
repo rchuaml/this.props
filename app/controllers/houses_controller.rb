@@ -36,6 +36,7 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+    @house = House.find(params[:id])
   end
 
   # POST /houses
@@ -67,6 +68,7 @@ class HousesController < ApplicationController
   # PATCH/PUT /houses/1
   # PATCH/PUT /houses/1.json
   def update
+    @house = House.find(params[:id])
     respond_to do |format|
       if @house.update(house_params)
         flash[:success] = 'House successfully updated.'
@@ -83,6 +85,7 @@ class HousesController < ApplicationController
   # DELETE /houses/1
   # DELETE /houses/1.json
   def destroy
+    @house = House.find(params[:id])
     @house.destroy
     respond_to do |format|
       flash[:success] = 'House successfully destroyed.'
