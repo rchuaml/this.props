@@ -3,10 +3,9 @@
 <!-- Filter Bar -->
   <div class="accordion" id="accordionExample">
     <div class="card">
-        <button id="filterButton" class="btn btn-link p-1 m-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Filters
-        </button>
-
+      <button id="filterButton" class="btn btn-link p-1 m-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Filters
+      </button>
       <div id="collapseOne" class="collapse show text-center" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body small">
           <div class="row">
@@ -47,7 +46,7 @@
               </div>
               <div class="row">
                 <div class="col">
-                 <label class="switch">
+                  <label class="switch">
                     <input type="checkbox">
                     <span class="sliderToggle round"></span>
                   </label>
@@ -56,21 +55,21 @@
             </div>
           </div>
           
-          <div class="row">
+          <div class="row pl-5 pr-5">
             <div class="col">
-              <button class="btn btn-warning small mt-3 col mr-5" style="font-size: 15px" onclick="nearme()" id="filter">Houses Near Me</button>
+              <button class="btn btn-warning small mt-3" style="font-size: 15px" onclick="nearme()" id="filter">Houses Near Me</button>
             </div>
             <div class="col">
-              <button class="btn btn-primary small mt-3 col ml-5" style="font-size: 15px" onclick="filter()" id="filter">Apply Filter</button>
+              <button class="btn btn-primary small mt-3" style="font-size: 15px" onclick="filter()" id="filter">Apply Filter</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <!--The div element for the map -->
-  <div id="map">
-  </div>
+  <div id="map"></div>
 
 <!--Load the API from the specified URL
 * The async attribute allows the browser to render the page while the API loads
