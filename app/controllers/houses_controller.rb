@@ -24,7 +24,7 @@ class HousesController < ApplicationController
   end
 
   def show
-  @house = House.find(params[:id])
+    @house = House.find(params[:id])
   end
 
   # GET /houses/new
