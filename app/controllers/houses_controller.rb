@@ -18,9 +18,9 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
     @buyer = current_user
     UserMailer.new_buyer(@house, @buyer).deliver_now
-        respond_to do |format|
-    format.html { redirect_to show_path(@house.id), notice: 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.' }
-  end
+    respond_to do |format|
+      format.html { redirect_to show_path(@house.id), notice: 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.' }
+    end
   end
 
   def show
@@ -41,11 +41,19 @@ class HousesController < ApplicationController
   def create
     @house = House.new(house_params)
     @house.user = current_user
+    puts params.inspect
 
     respond_to do |format|
       if @house.save
-        format.html { redirect_to root_path, notice: 'House was successfully created.' }
-        format.json { render :show, status: :created, location: @house }
+        if@house.images.attached?
+          format.html { redirect_to root_path, notice: 'House was successfully created.' }
+          format.json { render :show, status: :created, location: @house }
+        else
+          @house.destroy
+          flash.now[:notice] = "Please attach a few images before saving."
+          format.html { render :new}
+          format.json { render json: @house.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :new }
         format.json { render json: @house.errors, status: :unprocessable_entity }
@@ -78,13 +86,13 @@ class HousesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_house
-      @house = House.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_house
+    @house = House.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def house_params
-      params.require(:house).permit(:name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, :images => [])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def house_params
+    params.require(:house).permit(:name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, :images => [])
+  end
 end
