@@ -36,6 +36,7 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+    @house = House.find(params[:id])
   end
 
   # POST /houses
@@ -49,8 +50,6 @@ class HousesController < ApplicationController
       if @house.save
         if@house.images.attached?
           flash[:success] = "House post successfully created!"
-                    # format.html {render :new}
-
           format.html { redirect_to root_path}
           format.json { render :show, status: :created, location: @house }
         else
@@ -69,13 +68,14 @@ class HousesController < ApplicationController
   # PATCH/PUT /houses/1
   # PATCH/PUT /houses/1.json
   def update
+    @house = House.find(params[:id])
     respond_to do |format|
       if @house.update(house_params)
-        flash.now[:success] = 'House successfully updated.'
+        flash[:success] = 'House successfully updated.'
         format.html { redirect_to @house}
         format.json { render :show, status: :ok, location: @house }
       else
-        flash.now[:danger] = 'House failed to be updated.'
+        flash[:danger] = 'House failed to be updated.'
         format.html { render :edit }
         format.json { render json: @house.errors, status: :unprocessable_entity }
       end
@@ -85,9 +85,10 @@ class HousesController < ApplicationController
   # DELETE /houses/1
   # DELETE /houses/1.json
   def destroy
+    @house = House.find(params[:id])
     @house.destroy
     respond_to do |format|
-      flash.now[:success] = 'House successfully destroyed.'
+      flash[:success] = 'House successfully destroyed.'
       format.html { redirect_to houses_url }
       format.json { head :no_content }
     end

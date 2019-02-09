@@ -2,10 +2,28 @@
 <footer class="page-footer">
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://github.com/hongchiong/this.props"> this.props</a>
-  </div>
-  <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 col">
+      © 2019 Copyright:<a href="https://github.com/hongchiong/this.props"> this.props</a><span class="ml-4 mr-4">|</span><span id="donation" data-toggle="modal" data-target="#myModal">Click here</span> to keep this site alive.
+    </div>
+  
+  <!-- Modal Body -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Scan QR To Donate</h4>
+        </div>
+        <div class="modal-body text-center">
+          <%= image_tag "paylah.jpeg" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </footer>
 <!-- Footer -->
