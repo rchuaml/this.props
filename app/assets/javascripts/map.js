@@ -86,3 +86,72 @@
     markers = [];
     plotMarkers(filtered);
   };
+
+
+  //Find My Location
+  function nearme() {
+    var infoWindow = new google.maps.InfoWindow;
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+                            'Error: The Geolocation service failed.' :
+                            'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+
+    function distFromMe(originLat, originLong, targetLat, targetLong) {
+      function radians(deg) {
+        return (deg * Math.PI)/180
+      };
+      return (
+        6371 * Math.acos(Math.cos(radians(originLat))* Math.cos(radians(targetLat))* Math.cos(radians(targetLong) - radians(originLong))+ Math.sin(radians(originLat))* Math.sin(radians(targetLat)))
+      );
+    };
+
+    var originLat;
+    var originLong;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        let hereYouAre = "Here You Are!";
+  
+        originLat = position.coords.latitude;
+        originLong = position.coords.longitude;
+
+
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": `https://us1.locationiq.com/v1/reverse.php?key=pk.a152695d6750793ce3da9347d9567cdc&q=&lat=${originLat}&lon=${originLong}&format=json`,
+          "method": "GET"
+        }
+        
+        $.ajax(settings).done(function (response) {
+          hereYouAre = response.display_name;
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(hereYouAre);
+          infoWindow.open(map);
+          map.setCenter(pos);
+        });
+        
+        //Houses Within 2km
+        let housesNearMe = gon.houses.filter( house => {  
+          return distFromMe(originLat, originLong, house.lat, house.long) < 2
+        });
+    
+        clearMarkers(markers);
+        markers = [];
+        plotMarkers(housesNearMe);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    };
+  };

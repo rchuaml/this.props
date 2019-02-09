@@ -19,7 +19,7 @@ class HousesController < ApplicationController
     @buyer = current_user
     UserMailer.new_buyer(@house, @buyer).deliver_now
     respond_to do |format|
-      flash.now[:success] = 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.'
+      flash[:success] = 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.'
       format.html { redirect_to show_path(@house.id)}
 
     end
@@ -48,7 +48,9 @@ class HousesController < ApplicationController
     respond_to do |format|
       if @house.save
         if@house.images.attached?
-          flash.now[:success] = "House post successfully created!"
+          flash[:success] = "House post successfully created!"
+                    # format.html {render :new}
+
           format.html { redirect_to root_path}
           format.json { render :show, status: :created, location: @house }
         else
