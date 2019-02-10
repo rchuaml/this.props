@@ -21,7 +21,24 @@ class HousesController < ApplicationController
     respond_to do |format|
       flash[:success] = 'Email has been successfully sent to the seller of house. Please wait for the seller to contact you via email if they are keen.'
       format.html { redirect_to show_path(@house.id)}
+    end
+  end
 
+# Post add to favourites(interest table)
+  def favourite
+    @house = House.find(params[:id])
+    @current = current_user
+    @interest = Interest.new(user_id: @current.id, house_id: @house.id)
+    @check = Interest.where(:user_id => @current.id).where(:house_id => @house.id)
+    respond_to do |format|
+      if @check.blank?
+        @interest.save
+        flash[:success] = 'House successfully favourited.'
+        format.html { redirect_to show_path(@house.id)}
+      else
+        flash[:danger] = 'House already favourited!'
+        format.html { redirect_to show_path(@house.id)}
+      end
     end
   end
 
@@ -102,6 +119,6 @@ class HousesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def house_params
-    params.require(:house).permit(:name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, :images => [])
+    params.require(:house).permit(:name, :location, :lat, :long, :price, :bedrooms, :bathrooms, :floor_area, :furnishing, :floor_levels, :lease_left, :user_id, :house_id, :images => [])
   end
 end
