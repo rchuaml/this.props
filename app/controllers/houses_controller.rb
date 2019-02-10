@@ -42,6 +42,11 @@ class HousesController < ApplicationController
     end
   end
 
+  def favourite_list
+    @list = Interest.where(:user_id => params[:id])
+    @house = House.all
+  end
+
   def show
     @house = House.find(params[:id])
   end

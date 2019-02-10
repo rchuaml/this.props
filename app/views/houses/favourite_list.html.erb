@@ -1,0 +1,13 @@
+<h1> These are the list of favourited houses </h1>
+<ol>
+	<% @list.each do |list| %>
+		<% @house.each do |house| %>
+	 		<% if list.house_id == house.id %>
+	 			<li>
+				<h2> Name: <%= house.name %> </h2>
+				<h2> Location: <%= house.location %> </h2>
+				</li>
+			<% end %>
+		<% end %>
+	<% end %>
+</ul>
