@@ -1,22 +1,30 @@
 <style>
+
 .searchResults{
 	float:right;
 }
 
 body > div > div > div > div:nth-child(1){
-	background: #D3D3D3;
+	background: #FFA673;
 	padding: 30px;
 }
 
 .list-group-item{
-	background: #D3D3D3;
+	background: #FFA673;
 	margin: 0px 20px;
 }
 
 .list-group-item:hover{
 	background: #E87D2D;
 	cursor: pointer;
+	color: #f7e7d9;
 }
+
+h6 {
+	font-size: 15px;
+	margin: 8px 0px 10px 0px;
+}
+
 </style>
 
 <div class="container">
@@ -35,74 +43,79 @@ body > div > div > div > div:nth-child(1){
 		    </div>
 			  <% end %>
 
-			  <h1>New House</h1>
-			  <div class="form-group">
-			  	<h6>Upload Images:</h6>
-					<%= form.file_field :images, multiple: true, direct_upload: true %>
-			  </div>
+				<div class="text-center">
+			  	<h3 style="color: white">Post a New House</h3>
+				</div>
+				<div style="font-size: 80%">
+					<div class="form-group">
+						<h6>Upload Images:</h6>
+						<%= form.file_field :images, multiple: true, direct_upload: true %>
+					</div>
 
-				  <div class="form-group">
-			  	<h6>Name:</h6>
-			    <%= form.text_field :name, :class => "col-12" %>
-			  </div>
-			  	<h6>Search for location:</h6>
-			    <div class = "searchBox form-group">
-					<input type="text" placeholder="Search Here! Press space to trigger search!" class="search col-12" onkeypress= "search(this)"/>
-			  	</div>
+					<div class="form-group">
+						<h6>Name:</h6>
+						<%= form.text_field :name, :class => "col-12" %>
+					</div>
+					
+					<h6>Search for location:</h6>
+					<div class = "searchBox form-group">
+						<input type="text" placeholder="Search Here! Press space to trigger search!" class="search col-12" onkeypress= "search(this)"/>
+					</div>
 
-						  <div class="field">
-			  	<h6>Location:</h6>
-			    <%= form.text_area :location ,:class =>"col-12",:readonly => true%>
-			  </div>
+					<div class="field">
+						<h6>Location:</h6>
+						<%= form.text_area :location ,:class =>"col-12",:readonly => true%>
+					</div>
 
-			  <div class="field" style="display:none">
-			    <%= form.label :lat %>
-			    <%= form.number_field :lat, step: :any %>
-			  </div>
+					<div class="field" style="display:none">
+						<%= form.label :lat %>
+						<%= form.number_field :lat, step: :any %>
+					</div>
 
-			  <div class="field" style="display:none">
-			    <%= form.label :long %>
-			    <%= form.number_field :long, step: :any %>
-			  </div>
+					<div class="field" style="display:none">
+						<%= form.label :long %>
+						<%= form.number_field :long, step: :any %>
+					</div>
 
-			  <div class="form-group">
-			  	<h6>Price:</h6>
-			    <%= form.number_field :price, :class => "col-12" %>
-			  </div>
+					<div class="form-group">
+						<h6>Price:</h6>
+						<%= form.number_field :price, :class => "col-12" %>
+					</div>
 
-			  <div class="field" >
-			  	<h6>No. of Bedrooms:</h6>
-			    <%= form.number_field :bedrooms, :class => "col-12" %>
-			  </div>
+					<div class="field" >
+						<h6>No. of Bedrooms:</h6>
+						<%= form.number_field :bedrooms, :class => "col-12" %>
+					</div>
 
-			  <div class="field">
-			  	<h6>No. of Bathrooms:</h6>
-			    <%= form.number_field :bathrooms, :class => "col-12" %>
-			  </div>
+					<div class="field">
+						<h6>No. of Bathrooms:</h6>
+						<%= form.number_field :bathrooms, :class => "col-12" %>
+					</div>
 
-		  	<div class="field">
-		  		<h6>Floor Area(Square Meters):</h6>
-		    	<%= form.number_field :floor_area, :class => "col-12" %>
-		  	</div>
+					<div class="field">
+						<h6>Floor Area(Square Meters):</h6>
+						<%= form.number_field :floor_area, :class => "col-12" %>
+					</div>
 
-		  	<div class="field">
-		  		<h6>Furnishings:</h6>
-		    	<%= form.check_box :furnishing, :class => "col-12" %>
-		  	</div>
+					<div class="field">
+						<h6>Furnishings:</h6>
+						<%= form.check_box :furnishing, :class => "col-12" %>
+					</div>
 
-		  	<div class="field">
-		     	<h6>Floor Levels:</h6>
-		    	<%= form.number_field :floor_levels, :class => "col-12" %>
-		  	</div>
+					<div class="field">
+						<h6>Floor Levels:</h6>
+						<%= form.number_field :floor_levels, :class => "col-12" %>
+					</div>
 
-		  	<div class="field">
-		      <h6>Lease Left(years):</h6>
-		    	<%= form.number_field :lease_left, :class => "col-12" %>
-		  	</div>
+					<div class="field">
+						<h6>Lease Left(years):</h6>
+						<%= form.number_field :lease_left, :class => "col-12" %>
+					</div>
 
-		  	<div class="actions">
-		    	<%= form.submit %>
-		  	</div>
+					<div class="actions text-center mt-3">
+						<%= form.submit%>
+					</div>
+				</div>
 		<% end %>
 	</div>
 		<div class="col">
@@ -116,6 +129,8 @@ body > div > div > div > div:nth-child(1){
 
 
 <script>
+	document.querySelector("body > div > div:nth-child(4) > div > div:nth-child(1) > form > div:nth-child(4) > div.actions.text-center.mt-3 > input[type='submit']").className = "btn btn-this-primary";
+
 	function search(ele){
 		if(event.keyCode ==  32){
 			console.log("space pressed")
