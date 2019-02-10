@@ -23,12 +23,12 @@
           </div>
           <div class="row pt-4">
             <div class="col slidecontainer">
-              <p class="m-0">Bedrooms: <span id="bedrooms"></span></p>
+              <p class="m-0">Bedrooms (At Least): <span id="bedrooms"></span></p>
               <input type="range" min="<%= @houses.order(bedrooms: :asc).first.bedrooms %>" max="<%= @houses.order(bedrooms: :asc).last.bedrooms %>" value="<%= @houses.order(bedrooms: :asc).last.bedrooms/2 %>" class="slider" id="bedroom_range">
             </div>
 
             <div class="col slidecontainer">
-              <p class="m-0">Bathrooms: <span id="bathrooms"></span></p>
+              <p class="m-0">Bathrooms (At Least): <span id="bathrooms"></span></p>
               <input type="range" min="<%= @houses.order(bathrooms: :asc).first.bathrooms %>" max="<%= @houses.order(bathrooms: :asc).last.bathrooms %>" value="<%= @houses.order(bathrooms: :asc).last.bathrooms/2 %>" class="slider" id="bathroom_range">
             </div>
 
