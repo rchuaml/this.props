@@ -1,0 +1,11 @@
+<%= form_with scope: :chatbox_message, url:createfirst_message_path(params[:house_id]), local: true do |form| %>
+
+  <p>
+    <%= form.label :message %><br>
+    <%= form.text_area :message %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

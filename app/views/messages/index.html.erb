@@ -1,0 +1,29 @@
+<div class="container w-100 p-3">
+ <div class="row">
+ 	<div class="col col-lg-6">
+ 		<h6> <strong> House </strong> </h6>
+ 	</div>
+ 	<div class="col col-lg-3">
+ 		<h6> <strong> Email </strong> </h6>
+ 	</div>
+ 	<div class="col col-lg-3">
+ 	</div>
+ <div>
+
+ <% @sellerbuyers .each do |sellerbuyer| %>
+ <div class="container w-100 p-3">
+ 		<div class="row">
+ 			<div class="col col-lg-6">
+ 				<h6> <strong> <%= sellerbuyer.house.name %> </strong> <br/>  <%=sellerbuyer.house.location %> </h6>
+ 			</div>
+ 			<div class="col col-lg-3">
+ 				<h6> <br/>
+ 				<%= User.find(sellerbuyer[:user2]).email %> </h6>
+ 			</div>
+ 			<div class="col col-lg-3">
+ 				</br>
+ 				<button> <%= link_to 'Read Message', message_path(sellerbuyer.id) %></button>
+ 			</div>
+ 		</div>
+ </div>
+ <% end %>

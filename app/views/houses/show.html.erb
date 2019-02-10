@@ -108,14 +108,24 @@
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto">
 				<%= link_to 'Edit', edit_house_path(@house) %> |
-				<%= link_to "Delete", house_path(@house), method: :delete, data: { confirm: 'Are you sure you want to delete this house?' } %> | 
+				<%= link_to "Delete", house_path(@house), method: :delete, data: { confirm: 'Are you sure you want to delete this house?' } %> |
 				<%= link_to 'Back', root_path %>
+			</div>
+		</div>
+
+		<div class="row justify-content-md-center mb-1">
+			<div class="col-md-auto">
+				<button type="button" class="btn btn-light border-secondary">
+						<%= link_to 'Contact the seller of house via email', button_path(@house.id), method: :get %>
+				</button>
 			</div>
 		</div>
 
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto">
-				<%= button_to 'Send an email to contact the seller of house', button_path(@house.id), method: :get %>
+				<button type="button" class="btn btn-light border-secondary">
+					<%= link_to 'Contact the seller of house via chatbox', new_message_path(@house.id), method: :get %>
+				</button>
 			</div>
 		</div>
 	</div>

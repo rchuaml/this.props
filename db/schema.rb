@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_031304) do
+ActiveRecord::Schema.define(version: 2019_02_09_145950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,25 @@ ActiveRecord::Schema.define(version: 2019_02_03_031304) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "buyer_sellers", force: :cascade do |t|
+    t.integer "user1"
+    t.integer "user2"
+    t.bigint "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_buyer_sellers_on_house_id"
+  end
+
+  create_table "chatbox_messages", force: :cascade do |t|
+    t.integer "messenger"
+    t.integer "receiver"
+    t.text "message"
+    t.bigint "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_chatbox_messages_on_house_id"
   end
 
   create_table "houses", force: :cascade do |t|
