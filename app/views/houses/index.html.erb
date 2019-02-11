@@ -10,33 +10,33 @@
         <div class="card-body small">
           <div class="row">
             <div class="col">
-              Price: <span><input type="text" size="5" value="<%= @houses.order(price: :asc).first.price %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(price: :asc).last.price %>"/></span>
+              Price: <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(price: :asc).first.price %>" <% end %> placeholder="Min"/></span> - <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(price: :asc).last.price %>" <% end %> placeholder="Max"/></span>
             </div>
 
             <div class="col">
-              Floor Area: <span><input type="text" size="5" value="<%= @houses.order(floor_area: :asc).first.floor_area %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(floor_area: :asc).last.floor_area %>"placeholder="Max"/></span>
+              Floor Area: <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(floor_area: :asc).first.floor_area %>" <% end %> placeholder="Min"/></span> - <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(floor_area: :asc).last.floor_area %>" <% end %> placeholder="Max"/></span>
             </div>
-
+ 
             <div class="col">
-              Floor Levels: <span><input type="text" size="5" value="<%= @houses.order(floor_levels: :asc).first.floor_levels %>"/></span> - <span><input type="text" size="5" value="<%= @houses.order(floor_levels: :asc).last.floor_levels %>"/></span>
+              Floor Levels: <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(floor_levels: :asc).first.floor_levels %>" <% end %> placeholder="Min"/></span> - <span><input type="text" size="5" <% if !@houses.all.empty? %> value="<%= @houses.order(floor_levels: :asc).last.floor_levels %>" <% end %> placeholder="Max"/></span>
             </div>
           </div>
           <div class="row pt-4">
             <div class="col slidecontainer">
               <p class="m-0">Bedrooms (At Least): <span id="bedrooms"></span></p>
-              <input type="range" min="<%= @houses.order(bedrooms: :asc).first.bedrooms %>" max="<%= @houses.order(bedrooms: :asc).last.bedrooms %>" value="<%= @houses.order(bedrooms: :asc).last.bedrooms/2 %>" class="slider" id="bedroom_range">
+              <input type="range" <% if !@houses.all.empty? %> min="<%= @houses.order(bedrooms: :asc).first.bedrooms %>" max="<%= @houses.order(bedrooms: :asc).last.bedrooms %>" value="<%= @houses.order(bedrooms: :asc).last.bedrooms/2 %>" <% else %> min="0" max="10" value="5" <% end %> class="slider" id="bedroom_range">
             </div>
-
+ 
             <div class="col slidecontainer">
               <p class="m-0">Bathrooms (At Least): <span id="bathrooms"></span></p>
-              <input type="range" min="<%= @houses.order(bathrooms: :asc).first.bathrooms %>" max="<%= @houses.order(bathrooms: :asc).last.bathrooms %>" value="<%= @houses.order(bathrooms: :asc).last.bathrooms/2 %>" class="slider" id="bathroom_range">
+              <input type="range" <% if !@houses.all.empty? %> min="<%= @houses.order(bathrooms: :asc).first.bathrooms %>" max="<%= @houses.order(bathrooms: :asc).last.bathrooms %>" value="<%= @houses.order(bathrooms: :asc).last.bathrooms/2 %>" <% else %> min="0" max="10" value="5" <% end %> class="slider" id="bathroom_range">
             </div>
 
 
             <div class="col slidecontainer">
               <p class="m-0">Lease Left (At Least): <span id="leases"></span> years</p>
-              <input type="range" min="<%= @houses.order(lease_left: :asc).first.lease_left %>" max="<%= @houses.order(lease_left: :asc).last.lease_left %>" value="<%= @houses.order(lease_left: :asc).last.lease_left/2 %>" class="slider" id="lease_range">
-            </div>
+              <input type="range" <% if !@houses.all.empty? %> min="<%= @houses.order(lease_left: :asc).first.lease_left %>" max="<%= @houses.order(lease_left: :asc).last.lease_left %>" value="<%= @houses.order(lease_left: :asc).last.lease_left/2 %>" <% else %> min="0" max="99" value="45" <% end %> class="slider" id="lease_range">
+            </div>  
 
             <div class="col">
               <div class="row">
@@ -54,21 +54,11 @@
               </div>
             </div>
           </div>
-
-<<<<<<< HEAD
+          
           <div class="row">
             <button class="btn btn-warning small mt-3 col mr-5" style="font-size: 15px" onclick="nearme()" id="filter">Houses Near Me</button>
 
             <button class="btn btn-primary small mt-3 col ml-5" style="font-size: 15px" onclick="filter()" id="filter">Apply Filter</button>
-=======
-          <div class="row pl-5 pr-5">
-            <div class="col">
-              <button class="btn btn-warning small mt-3" style="font-size: 15px" onclick="nearme()" id="filter">Houses Near Me</button>
-            </div>
-            <div class="col">
-              <button class="btn btn-primary small mt-3" style="font-size: 15px" onclick="filter()" id="filter">Apply Filter</button>
-            </div>
->>>>>>> 07e1c99de18943488c267fec0f0453853539b0e8
           </div>
         </div>
       </div>
