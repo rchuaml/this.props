@@ -3,16 +3,39 @@
 	display:none;
     width:100%;
     table-layout:fixed;
-}
-
-td{
-	word-break:break-all;
+    background: lightgray;
+    border: 1px solid black;
 }
 
 .compare{
 	display:none;
 }
 
+
+td {
+	border-left: 1px solid black;
+}
+
+th {
+	border-left: 1px solid black;
+}
+
+input{
+	display: none;
+}
+
+.list-group-item{
+	background: lightgray;
+}
+
+.list-group-item:hover{
+	cursor: pointer;
+	background: orange;
+}
+
+tr:hover{
+	background: orange;
+}
 </style>
 
 
@@ -87,6 +110,8 @@ td{
   </tbody>
 </table>
 
+<%= button_to "Clear Table", favouritelist_path(params[:id].to_i), :method => "get" %>
+
 <script>
 	var i = 0;
       <% @list.each do |list|%>
@@ -96,6 +121,8 @@ td{
 				document.querySelectorAll(".list-group-item")[i].addEventListener("click", function(){
 					document.querySelector(".compare").style.display = "block";
 					document.querySelector(".table").style.display = "block";
+					document.querySelector("input").style.display = "block";
+
 				    var node = document.createElement("th");
 			        var textnode = document.createTextNode('House id : <%= house.id %>');
 			        node.appendChild(textnode);
