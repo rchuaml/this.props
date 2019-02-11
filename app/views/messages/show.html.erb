@@ -12,40 +12,42 @@
 <div class="container w-75 p-3">
 	<% @messages.each do |message| %>
 		<% if User.find(message.messenger) != current_user %>
-			<div class="p-3 mb-2 bg-warning text-dark">
+		<div class="p-3 mb-2 bg-warning text-dark">
   			<div class="row justify-content-md-center pl-3 pr-3">
-      		<h6>
-      			<%= User.find(message.messenger).email %> </br>
-      			<%= message.created_at.to_time.to_s[0..-10] %> </br>
-     				<%= message.message %>
-     			<h6>
+				<div class="d-flex w-100 justify-content-between text-white">
+					<h6 class="mb-1">From: <%= User.find(message.messenger).email %></h6>
+				</div>
+				<div class="d-flex w-100 justify-content-center">
+					<h5><%= message.message %></h5>
+				</div>
+				<div class="d-flex w-100 justify-content-end text-white">
+					<small>Sent On: <%= message.created_at.to_time.to_s[0..-10] %></small>
+				</div>
     		</div>
     	</div>
     <% else %>
     	<div class="p-3 mb-2 bg-light text-dark">
   			<div class="row justify-content-md-center pl-3 pr-3">
-      		<h6>
-      			<%= message.created_at.to_time.to_s[0..-10] %> </br>
-     				<%= message.message %>
-     			<h6>
+				<div class="d-flex w-100 justify-content-center">
+					<h5><%= message.message %></h5>
+				</div>
+				<div class="d-flex w-100 justify-content-end">
+					<small>Sent On: <%= message.created_at.to_time.to_s[0..-10] %></small>
+				</div>
     		</div>
     	</div>
     <% end %>
   <% end %>
- <div>
 
-<div  class="p-3 mb-2 bg-white text-dark">
-	<div class="container">
-		<div class="row justify-content-md-center">
-			<%= form_with scope: :chatbox_message, url:create_message_path(@sellerbuyer.id), local: true do |form| %>
-  			<p>
-    			<%= form.label :message %><br>
-    			<%= form.text_area :message %>
-  			</p>
-  			<p>
-    			<%= form.submit %>
-  			</p>
-			<% end %>
+	<div class="p-3 mb-2 bg-white text-dark">
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<%= form_with scope: :chatbox_message, class: "form-group text-center w-100", url:create_message_path(@sellerbuyer.id), local: true do |form|%>
+					<strong><%= form.label :message%></strong><br>
+					<%= form.text_area :message, class: "form-control w-100" %>
+					<%= form.submit class: "btn btn-this-primary m-2", value: "Send" %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

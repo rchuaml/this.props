@@ -25,7 +25,7 @@
 	</div>
 </div>
 
-	<div class="container w-100 p-3" style="background-color: #fcfcfc; border-radius: 10px; border: solid 1px #E87D2D;">
+	<div class="container w-75 p-3" style="background-color: #f4f6f9; border-radius: 10px; border: solid 1px #E87D2D;">
 		<div class="row">
 			<div class="col">
 				<div class="heading">
@@ -107,7 +107,19 @@
 
 		<div class="row justify-content-md-center m-2">
 			<div class="col-md-auto">
-				<%= button_to 'Favourite this house', show_path(@house.id), method: :post %>
+				<button type="button" class="btn btn-this-second">
+					<%= link_to 'Add to Favorites', show_path(@house.id), method: :post %>
+				</button>
+			</div>
+			<div class="col-md-auto">
+				<button type="button" class="btn btn-this-second">
+					<%= @sellerbuyerId == nil ? (link_to 'Message Seller', new_message_path(@house.id), method: :get) : (link_to 'Message Seller', message_path(@sellerbuyerId.id), method: :get) %>
+				</button>
+			</div>
+			<div class="col-md-auto">
+				<button type="button" class="btn btn-this-second">
+					<%= link_to 'Email Seller', button_path(@house.id), method: :get %>
+				</button>
 			</div>
 		</div>
 
@@ -118,21 +130,9 @@
 				<%= link_to 'Back', root_path %>
 			</div>
 		</div>
-		<div class="row justify-content-md-center">
-			<div class="col-md-auto">
-				<button type="button" class="btn btn-light border-secondary">
-					<%= link_to 'Message Seller', new_message_path(@house.id), method: :get %>
-				</button>
-
-		<div class="row justify-content-md-center m-2">
-			<div class="col-md-auto">
-				<%= button_to 'Email Seller', button_path(@house.id), method: :get %>
-			</div>
-		</div>
 	</div>
 
 <script>
 	document.querySelector("body > div > div.container.w-100.p-3 > div:nth-child(7) > div > form > input[type='submit']").className = "btn btn-this-primary";
-
 	$('.carousel').carousel()
 </script>

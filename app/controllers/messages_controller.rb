@@ -44,10 +44,6 @@ class MessagesController < ApplicationController
 
 
   def createfirst
-  # render plain: message_params[:message]
-  # render plain: params[:chatbox_message][:message].inspect
-  # render plain: params[:house_id].to_i.inspect
-  # render plain: current_user.id
     house = House.find(params[:house_id].to_i)
 
     sellerbuyer1 = BuyerSeller.new(user1: current_user.id, user2: house.user_id, house: house)
@@ -59,11 +55,7 @@ class MessagesController < ApplicationController
     message = ChatboxMessage.new(messenger: current_user.id, receiver: house.user_id, message: message_params[:message], house: house)
     message.save
 
-    respond_to do |format|
-      flash[:success] = 'Message has been successfully sent to the seller of house through chatbox. Please check your MyChatBox.'
-      format.html { redirect_to show_path(house.id)}
-    end
-
+    redirect_to message_path(sellerbuyer1.id)
   end
 
   private
