@@ -118,6 +118,11 @@
 				<%= link_to 'Back', root_path %>
 			</div>
 		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<button type="button" class="btn btn-light border-secondary">
+					<%= link_to 'Message Seller', new_message_path(@house.id), method: :get %>
+				</button>
 
 		<div class="row justify-content-md-center m-2">
 			<div class="col-md-auto">
