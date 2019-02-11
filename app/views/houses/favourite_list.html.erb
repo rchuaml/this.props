@@ -1,3 +1,17 @@
+<style>
+table{
+	display:none;
+    width:100%;
+    table-layout:fixed;
+}
+
+.compare{
+	display:none;
+}
+
+</style>
+
+
 <% if current_user.id == params[:id].to_i %>
 	<h1> This is your list of favourited houses </h1>
 <% else %>
@@ -16,7 +30,16 @@
 	<% end %>
 </ul>
 
-<table class="table" style = "table-layout: fixed">
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<div class = "compare"><h3> Comparison Table : </h3> </div>
+
+<table class="table">
   <thead>
     <tr id = "head">
       <th >Type</th>
@@ -65,7 +88,10 @@
       <% @list.each do |list|%>
       	<% @house.each do |house| %>
 			<% if list.house_id ==  house.id %>
+
 				document.querySelectorAll(".list-group-item")[i].addEventListener("click", function(){
+					document.querySelector(".compare").style.display = "block";
+					document.querySelector(".table").style.display = "block";
 				    var node = document.createElement("th");
 			        var textnode = document.createTextNode('House id : <%= house.id %>');
 			        node.appendChild(textnode);
