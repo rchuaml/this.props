@@ -75,8 +75,8 @@
         house.floor_area <= parseInt(maxFloorArea) &&
         house.floor_levels >= parseInt(minFloorLevel) &&
         house.floor_levels <= parseInt(maxFloorLevel) &&
-        house.bedrooms == parseInt(bedrooms) &&
-        house.bathrooms == parseInt(bathrooms) &&
+        house.bedrooms >= parseInt(bedrooms) &&
+        house.bathrooms >= parseInt(bathrooms) &&
         house.lease_left >= parseInt(minLeaseLeft) && 
         house.furnishing == furnish
       );

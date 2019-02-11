@@ -8,6 +8,9 @@
     		<%= link_to 'MyChatBox', messages_path %>
     	</li>
       <li class="nav-item">
+   		 <%= link_to 'Favourites', favouritelist_path(current_user.id) %>
+      </li>
+      <li class="nav-item">
         <%= link_to 'Post a House', new_house_path %>
       </li>
       <li class="nav-item">

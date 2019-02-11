@@ -1,10 +1,15 @@
-body {
+html, body {
   font-family: 'Hind', sans-serif;
   height: 100%;
 }
 
 .nav-item {
   padding-left: 10px;
+}
+
+.page-footer {
+  position: absolute;
+  bottom: 0;
 }
 
 a {
@@ -15,6 +20,13 @@ a:hover {
   text-decoration: none;
   color: #FFA673;
 }
+
+.heading {
+  font-size: 95%;
+  font-style: italic;
+  color: #E87D2D;
+}
+
 
 //Donation 'button'
 #donation {
@@ -55,11 +67,12 @@ a:hover {
 
 .btn-this-primary {
   background-color: #E89F45;
+  color: white;
 }
 
 .btn-this-primary:hover {
-  background-color: #FFB84D;
-  ;
+  background-color: #f7e7d9;
+  color: #FFAA5A;
 }
 //Slider
 .slider {
