@@ -56,7 +56,7 @@ h6 {
 						<h6>Name:</h6>
 						<%= form.text_field :name, :class => "col-12" %>
 					</div>
-					
+
 					<h6>Search for location:</h6>
 					<div class = "searchBox form-group">
 						<input type="text" placeholder="Search Here! Press space to trigger search!" class="search col-12" onkeypress= "search(this)"/>
@@ -140,7 +140,7 @@ h6 {
 	 var settings = {
    "async": true,
    "crossDomain": true,
-   "url": "https://us1.locationiq.com/v1/search.php?key=pk.a152695d6750793ce3da9347d9567cdc&q=" + user_input + "&format=json",
+   "url": "https://us1.locationiq.com/v1/search.php?key=<%= ENV['locationiq_api'] %>" + "&q=" + user_input + "&format=json",
    "method": "GET"
  	}
  	// Create Search Results and click event to the search results to update form
