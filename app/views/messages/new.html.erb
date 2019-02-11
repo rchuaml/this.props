@@ -1,11 +1,11 @@
-<%= form_with scope: :chatbox_message, url:createfirst_message_path(params[:house_id]), local: true do |form| %>
-
-  <p>
-    <%= form.label :message %><br>
-    <%= form.text_area :message %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div class="p-3 mb-2 bg-white text-dark">
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<%= form_with scope: :chatbox_message, class: "form-group text-center w-100", url:createfirst_message_path(params[:house_id]), local: true do |form|%>
+    			<strong><%= form.label :message%></strong><br>
+    			<%= form.text_area :message, class: "form-control w-100" %>
+				<%= form.submit class: "btn btn-this-primary m-2", value: "Send Message" %>
+			<% end %>
+		</div>
+	</div>
+</div>

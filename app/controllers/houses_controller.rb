@@ -49,6 +49,7 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find(params[:id])
+    @sellerbuyerId = BuyerSeller.where(user1: current_user.id, user2: @house.user_id).first
   end
 
   # GET /houses/new
