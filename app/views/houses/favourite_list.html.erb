@@ -7,6 +7,11 @@
     border: 1px solid black;
 }
 
+a:hover{
+	color: #00FFFF;
+	font-size:larger;
+}
+
 .compare{
 	display:none;
 }
@@ -123,9 +128,12 @@ tr:hover{
 					document.querySelector(".table").style.display = "block";
 					document.querySelector("input").style.display = "block";
 
-				    var node = document.createElement("th");
+				    var a = document.createElement("a");
 			        var textnode = document.createTextNode('House id : <%= house.id %>');
-			        node.appendChild(textnode);
+			        a.href = "/houses/" + '<%= house.id %>';
+			        a.appendChild(textnode);
+			        var node = document.createElement("th");
+			        node.appendChild(a);
 			        document.querySelector("#head").appendChild(node);
 
 			        node = document.createElement("td");
