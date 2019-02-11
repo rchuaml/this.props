@@ -1,13 +1,138 @@
-<h1> These are the list of favourited houses </h1>
-<ol>
-	<% @list.each do |list| %>
-		<% @house.each do |house| %>
-	 		<% if list.house_id == house.id %>
-	 			<li>
-				<h2> Name: <%= house.name %> </h2>
-				<h2> Location: <%= house.location %> </h2>
-				</li>
+<% if current_user.id == params[:id].to_i %>
+	<h1> This is your list of favourited houses </h1>
+<% else %>
+	<h1> This is the list of favourited houses for this user </h1>
+<% end %>
+
+
+
+<ul class = "list-group">
+      <% @list.each do |list|%>
+      	<% @house.each do |house| %>
+			<% if list.house_id ==  house.id %>
+				<li class = "list-group-item"><h3>Name: <%= house.name %></h3> <h6> Location: <%= house.location %> </h6> </li>
 			<% end %>
-		<% end %>
+	  	<% end %>
 	<% end %>
 </ul>
+
+<table class="table" style = "table-layout: fixed">
+  <thead>
+    <tr id = "head">
+      <th >Type</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr id = "house_id">
+      <th scope="row">House Id</th>
+   </td>
+    </tr>
+    <tr id = "name">
+      <th scope="row">Name</th>
+    </tr>
+    <tr id = "location">
+      <th scope="row">Location</th>
+    </tr>
+    <tr id = "price">
+      <th scope="row">Price</th>
+    </tr>
+    <tr id = "bedrooms">
+      <th scope="row">Bedrooms</th>
+    </tr>
+    <tr id = "bathrooms">
+      <th scope="row">Bathrooms</th>
+    </tr>
+    <tr id = "area">
+      <th scope="row">Floor Area</th>
+    </tr>
+    <tr id = "furnishing">
+      <th scope="row">Furnishing</th>
+    </tr>
+    <tr id = "floors">
+      <th scope="row">Floor Levels</th>
+    </tr>
+    <tr id = "lease">
+      <th scope="row">Lease Left (years)</th>
+    </tr>
+    <tr id = "belongs">
+      <th scope="row">Belongs to user(id)</th>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+	var i = 0;
+      <% @list.each do |list|%>
+      	<% @house.each do |house| %>
+			<% if list.house_id ==  house.id %>
+				document.querySelectorAll(".list-group-item")[i].addEventListener("click", function(){
+				    var node = document.createElement("th");
+			        var textnode = document.createTextNode('House id : <%= house.id %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#head").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.id %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#house_id").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.name %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#name").appendChild(node);
+
+			       	node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.location %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#location").appendChild(node);
+
+			       	node = document.createElement("td");
+			        textnode = document.createTextNode('$ <%= house.price %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#price").appendChild(node);
+
+			       	node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.bedrooms %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#bedrooms").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.bathrooms %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#bathrooms").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.floor_area %> square m');
+			        node.appendChild(textnode);
+			        document.querySelector("#area").appendChild(node);
+
+			        node = document.createElement("td");
+			        <% if house.furnishing == true %>
+			        textnode = document.createTextNode('<%= "Furnished" %>');
+			        <% else %>
+			        textnode = document.createTextNode('<%= "Unfurnished" %>');
+			        <% end %>
+			        node.appendChild(textnode);
+			        document.querySelector("#furnishing").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.floor_levels %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#floors").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.lease_left %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#lease").appendChild(node);
+
+			        node = document.createElement("td");
+			        textnode = document.createTextNode('<%= house.user_id %>');
+			        node.appendChild(textnode);
+			        document.querySelector("#belongs").appendChild(node);
+				});
+				i++
+			<% end %>
+	  	<% end %>
+	<% end %>
+
+</script>
