@@ -83,3 +83,5 @@ production:
   database: thisprops_production
   username: thisprops
   password: <%= ENV['THISPROPS_DATABASE_PASSWORD'] %>
+
+host: localhost
