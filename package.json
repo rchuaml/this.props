@@ -1,5 +1,7 @@
 {
   "name": "thisprops",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "yarn": "^1.13.0"
+  }
 }
