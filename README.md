@@ -1,24 +1,9 @@
-# README
+# this.props
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Deployed to heroku
+https://this-props.herokuapp.com/
 
-Things you may want to cover:
+## Description:
+A property exchange website where people can post houses with full details, contact sellers, compare houses.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Group project done by Hongchiong, Ronnie, SiewLeng
