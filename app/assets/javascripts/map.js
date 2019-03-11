@@ -15,7 +15,7 @@
 
     // The map, centered at Sg
     map = new google.maps.Map(document.getElementById('map'), {zoom: 11, center: sg});
-    
+
     plotMarkers(gon.houses);
   };
 
@@ -77,7 +77,7 @@
         house.floor_levels <= parseInt(maxFloorLevel) &&
         house.bedrooms >= parseInt(bedrooms) &&
         house.bathrooms >= parseInt(bathrooms) &&
-        house.lease_left >= parseInt(minLeaseLeft) && 
+        house.lease_left >= parseInt(minLeaseLeft) &&
         house.furnishing == furnish
       );
     });
@@ -119,7 +119,7 @@
         };
 
         let hereYouAre = "Here You Are!";
-  
+
         originLat = position.coords.latitude;
         originLong = position.coords.longitude;
 
@@ -130,7 +130,7 @@
           "url": `https://us1.locationiq.com/v1/reverse.php?key=pk.a152695d6750793ce3da9347d9567cdc&q=&lat=${originLat}&lon=${originLong}&format=json`,
           "method": "GET"
         }
-        
+
         $.ajax(settings).done(function (response) {
           hereYouAre = response.display_name;
           infoWindow.setPosition(pos);
@@ -138,12 +138,12 @@
           infoWindow.open(map);
           map.setCenter(pos);
         });
-        
+
         //Houses Within 2km
-        let housesNearMe = gon.houses.filter( house => {  
+        let housesNearMe = gon.houses.filter( house => {
           return distFromMe(originLat, originLong, house.lat, house.long) < 2
         });
-    
+
         clearMarkers(markers);
         markers = [];
         plotMarkers(housesNearMe);
